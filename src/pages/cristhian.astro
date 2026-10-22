@@ -1,0 +1,337 @@
+---
+import HeaderAstroComponent from "../components/Header.astro";
+
+const canciones = [
+    {
+        titulo: "Two Faced",
+        artista: "Linkin Park",
+        album: "From Zero",
+        anio: "2024",
+        portada:
+            "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/1000x1000bb.jpg",
+        enlace: "https://music.apple.com/us/album/two-faced/1766137049?i=1766137063",
+        alt: "Portada del álbum From Zero de Linkin Park",
+    },
+    {
+        titulo: "Beautiful",
+        artista: "Eminem",
+        album: "Relapse",
+        anio: "2009",
+        portada:
+            "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/27/96/e3/2796e35a-484d-f1de-5098-dbde88d5fb56/00602527032139.rgb.jpg/1000x1000bb.jpg",
+        enlace: "https://music.apple.com/us/album/beautiful/1440738082?i=1440738383",
+        alt: "Portada del álbum Relapse de Eminem",
+    },
+    {
+        titulo: "The First Time",
+        artista: "Damiano David",
+        album: "FUNNY little FEARS",
+        anio: "2025",
+        portada:
+            "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/88/13/7688131c-724a-d488-da1a-efdf04168cfb/196873640747.jpg/1000x1000bb.jpg",
+        enlace: "https://music.apple.com/us/album/the-first-time/1842151981?i=1842152119",
+        alt: "Portada del álbum FUNNY little FEARS de Damiano David",
+    },
+];
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Tres canciones que no puedo dejar de escuchar y los álbumes a los que pertenecen."
+        />
+        <title>Mis canciones favoritas | Cristhian</title>
+    </head>
+    <body>
+        <HeaderAstroComponent />
+        <main>
+            <section class="intro" aria-labelledby="page-title">
+                <p class="eyebrow">MI BANDA SONORA</p>
+                <h1 id="page-title">En repetición <span>♪</span></h1>
+                <p class="description">
+                    Tres canciones que no puedo dejar de escuchar. Cada una
+                    tiene su propio sonido, su historia y un lugar especial en
+                    mi playlist.
+                </p>
+            </section>
+
+            <section
+                class="song-list"
+                aria-label="Mis tres canciones favoritas"
+            >
+                {
+                    canciones.map((cancion, index) => (
+                        <article class="song-card">
+                            <a
+                                class="cover-link"
+                                href={cancion.enlace}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`Escuchar ${cancion.titulo} en Apple Music`}
+                            >
+                                <img
+                                    src={cancion.portada}
+                                    alt={cancion.alt}
+                                    loading="lazy"
+                                    width="1000"
+                                    height="1000"
+                                />
+                                <span class="track-number">0{index + 1}</span>
+                            </a>
+                            <div class="song-info">
+                                <p class="song-label">CANCIÓN {index + 1}</p>
+                                <h2>{cancion.titulo}</h2>
+                                <p class="artist">{cancion.artista}</p>
+                                <div class="album-details">
+                                    <span>ÁLBUM</span>
+                                    <p>{cancion.album}</p>
+                                    <span class="year">{cancion.anio}</span>
+                                </div>
+                                <a
+                                    class="listen-link"
+                                    href={cancion.enlace}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Escuchar en Apple Music{" "}
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </article>
+                    ))
+                }
+            </section>
+        </main>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+
+    :global(body) {
+        min-height: 100vh;
+        margin: 0;
+        background:
+            radial-gradient(ellipse at 85% 5%, #30221c 0, transparent 34rem),
+            #151413;
+        color: #f5f0e8;
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    :global(body > div:first-child) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.25rem clamp(1.25rem, 7vw, 7rem);
+        border-bottom: 1px solid #ffffff1a;
+    }
+
+    :global(body > div:first-child h1) {
+        margin: 0;
+        color: #f5f0e8;
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+    }
+
+    :global(body > div:first-child nav) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+    }
+
+    :global(body > div:first-child nav a) {
+        color: #c4bcb2;
+        font-size: 0.85rem;
+        text-decoration: none;
+    }
+
+    :global(body > div:first-child nav a:hover) {
+        color: #e9a46f;
+    }
+
+    main {
+        width: min(100% - 2.5rem, 1000px);
+        margin: 0 auto;
+        padding: clamp(3.5rem, 9vw, 7rem) 0 5rem;
+    }
+
+    .intro {
+        max-width: 650px;
+        margin-bottom: 3.5rem;
+    }
+
+    .eyebrow,
+    .song-label,
+    .album-details > span {
+        color: #e9a46f;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+    }
+
+    .intro h1 {
+        margin: 0.75rem 0 1rem;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        letter-spacing: -0.07em;
+        line-height: 1;
+    }
+
+    .intro h1 span {
+        color: #e9a46f;
+        font-size: 0.7em;
+    }
+
+    .description {
+        max-width: 520px;
+        margin: 0;
+        color: #bcb4aa;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .song-list {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .song-card {
+        display: grid;
+        grid-template-columns: minmax(150px, 245px) 1fr;
+        overflow: hidden;
+        border: 1px solid #ffffff18;
+        border-radius: 14px;
+        background: #ffffff08;
+    }
+
+    .cover-link {
+        position: relative;
+        display: block;
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: #292522;
+    }
+
+    .cover-link img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 250ms ease;
+    }
+
+    .cover-link:hover img {
+        transform: scale(1.04);
+    }
+
+    .track-number {
+        position: absolute;
+        right: 0.8rem;
+        bottom: 0.8rem;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-shadow: 0 1px 6px #000;
+    }
+
+    .song-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .song-label {
+        margin: 0 0 0.6rem;
+    }
+
+    .song-info h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+        letter-spacing: -0.04em;
+    }
+
+    .artist {
+        margin: 0.35rem 0 1.5rem;
+        color: #c4bcb2;
+        font-size: 1rem;
+    }
+
+    .album-details {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.35rem 0.65rem;
+        padding-top: 1rem;
+        border-top: 1px solid #ffffff1a;
+    }
+
+    .album-details > span {
+        font-size: 0.62rem;
+    }
+
+    .album-details p {
+        margin: 0;
+        color: #f5f0e8;
+        font-size: 0.95rem;
+    }
+
+    .album-details .year {
+        margin-left: 0.35rem;
+        color: #bcb4aa;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+    }
+
+    .listen-link {
+        margin-top: 1.4rem;
+        color: #e9a46f;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .listen-link:hover {
+        color: #ffd0a6;
+    }
+
+    .listen-link span {
+        padding-left: 0.2rem;
+    }
+
+    @media (max-width: 560px) {
+        :global(body > div:first-child) {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .song-card {
+            grid-template-columns: 115px 1fr;
+        }
+
+        .song-info {
+            padding: 1rem;
+        }
+
+        .song-info h2 {
+            font-size: 1.35rem;
+        }
+
+        .artist {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .listen-link {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+        }
+    }
+</style>
