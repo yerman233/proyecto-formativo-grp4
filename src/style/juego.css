@@ -1,0 +1,575 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    font-family: Manrope, system-ui, sans-serif;
+    color: #f5f2ff;
+    background: #11101d;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 52% 0%, #28203e 0, #11101d 52%)
+}
+
+button,
+a {
+    font: inherit
+}
+
+.game-shell {
+    max-width: 1240px;
+    margin: auto;
+    padding: 0 32px
+}
+
+.topbar {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff12
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ff83bd;
+    font-weight: 800;
+    font-size: 17px
+}
+
+.brand:first-letter {
+    font-size: 25px
+}
+
+.topbar nav {
+    display: flex;
+    gap: 30px
+}
+
+.topbar nav a {
+    color: #aaa6bd;
+    text-decoration: none;
+    font-size: 12px
+}
+
+.topbar nav a:hover {
+    color: #fff
+}
+
+.intro {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 37px 0 27px
+}
+
+.eyebrow {
+    font: 10px 'DM Mono', monospace;
+    letter-spacing: 2px;
+    color: #a58be6;
+    margin: 0 0 11px
+}
+
+.intro h1 {
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -2.6px
+}
+
+.intro h1 span {
+    color: #ff83bd
+}
+
+.lede {
+    color: #aaa6bd;
+    font-size: 13px;
+    margin: 12px 0 0
+}
+
+.stats {
+    display: flex;
+    gap: 35px;
+    text-align: right
+}
+
+.stats div {
+    display: grid;
+    gap: 5px
+}
+
+.stats b {
+    font-size: 24px;
+    color: #ff83bd
+}
+
+.stats small {
+    font: 9px 'DM Mono', monospace;
+    letter-spacing: 1.3px;
+    color: #817d94
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 20px;
+    align-items: stretch
+}
+
+.game-frame {
+    position: relative;
+    border: 1px solid #514469;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #19172d;
+    box-shadow: 0 20px 65px #07061080
+}
+
+.scene-label {
+    height: 39px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+    background: #19172d;
+    color: #c5bfd9;
+    font: 9px 'DM Mono', monospace;
+    letter-spacing: 1.3px
+}
+
+.live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #65e3bb;
+    box-shadow: 0 0 9px #65e3bb
+}
+
+.scene-time {
+    margin-left: auto;
+    color: #77728e
+}
+
+.game-frame canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    image-rendering: pixelated
+}
+
+.overlay {
+    position: absolute;
+    inset: 39px 0 0;
+    display: grid;
+    place-items: center;
+    background: #11101d9c;
+    backdrop-filter: blur(3px);
+    transition: opacity .25s
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none
+}
+
+.overlay-card {
+    text-align: center;
+    max-width: 340px;
+    padding: 22px
+}
+
+.big-note {
+    font-size: 36px;
+    color: #ff83bd
+}
+
+.overlay-card h2 {
+    font-size: 22px;
+    margin: 9px 0
+}
+
+.overlay-card p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #bbb5cc;
+    margin: 0 0 20px
+}
+
+.overlay-card button {
+    border: 0;
+    border-radius: 7px;
+    background: #ff83bd;
+    color: #26162a;
+    padding: 12px 17px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer
+}
+
+.overlay-card button span {
+    margin-left: 14px
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 2px;
+    color: #aaa6bd;
+    font: 10px 'DM Mono', monospace
+}
+
+.controls kbd {
+    display: inline-grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    border: 1px solid #49435c;
+    border-radius: 4px;
+    background: #211e32;
+    color: #e5dff1;
+    font: 10px 'DM Mono', monospace
+}
+
+.controls small {
+    margin-left: 8px;
+    color: #77728e;
+    font-size: 8px;
+    letter-spacing: 1px
+}
+
+.hint {
+    color: #b897e9
+}
+
+.playlist {
+    padding: 20px 17px 14px;
+    border: 1px solid #373248;
+    border-radius: 12px;
+    background: linear-gradient(155deg, #201d31, #171624);
+    display: flex;
+    flex-direction: column;
+    min-height: 0
+}
+
+.playlist-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end
+}
+
+.playlist-head .eyebrow {
+    margin-bottom: 7px
+}
+
+.playlist-head h2 {
+    font-size: 15px;
+    margin: 0
+}
+
+.playlist-head>span {
+    font: 10px 'DM Mono', monospace;
+    color: #a58be6
+}
+
+.playlist-note {
+    font-size: 10px;
+    color: #827d93;
+    margin: 9px 0 17px
+}
+
+.tracks {
+    display: grid;
+    gap: 7px;
+    flex: 1;
+    align-content: start
+}
+
+.empty-note {
+    text-align: center;
+    padding: 40px 0;
+    color: #77728e;
+    font-size: 11px;
+    line-height: 1.8
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: #ffffff06;
+    color: #eeeaf6;
+    cursor: pointer
+}
+
+.track:hover {
+    border-color: #ffffff24;
+    background: #ffffff0b
+}
+
+.vinyl {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #28213a 0 17%, var(--tone) 19% 22%, #232035 24% 29%, var(--tone) 31% 100%);
+    color: #fff;
+    font-size: 12px
+}
+
+.track b,
+.track small {
+    display: block
+}
+
+.track b {
+    font-size: 10px;
+    font-weight: 700
+}
+
+.track small {
+    margin-top: 3px;
+    color: #858095;
+    font-size: 9px
+}
+
+.track-play {
+    margin-left: auto;
+    color: #b79ce9;
+    font-size: 11px
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 15px;
+    margin-top: auto;
+    border-top: 1px solid #ffffff12
+}
+
+.player>button {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: #ff83bd;
+    color: #211729;
+    font-size: 11px;
+    cursor: pointer
+}
+
+.player>button:disabled {
+    opacity: .35;
+    cursor: default
+}
+
+.track-info {
+    min-width: 0;
+    flex: 1
+}
+
+.track-info b,
+.track-info small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.track-info b {
+    font-size: 10px
+}
+
+.track-info small {
+    margin-top: 3px;
+    font-size: 9px;
+    color: #8d879d
+}
+
+.volume {
+    color: #a58be6
+}
+
+.mute {
+    border: 0;
+    background: none;
+    color: #8f899f;
+    font-size: 9px;
+    text-align: left;
+    padding: 12px 0 0;
+    cursor: pointer
+}
+
+.mute:disabled {
+    opacity: .4;
+    cursor: default
+}
+
+.touch-controls {
+    display: none
+}
+
+footer {
+    text-align: center;
+    color: #68647a;
+    font-size: 10px;
+    padding: 18px 0 22px
+}
+
+@media(max-width:760px) {
+    .game-shell {
+        padding: 0 16px
+    }
+
+    .topbar {
+        height: 65px
+    }
+
+    .topbar nav {
+        gap: 14px
+    }
+
+    .topbar nav a {
+        font-size: 10px
+    }
+
+    .intro {
+        padding: 27px 0 21px
+    }
+
+    .intro h1 {
+        font-size: 37px
+    }
+
+    .lede {
+        max-width: 290px;
+        line-height: 1.6
+    }
+
+    .stats {
+        gap: 14px
+    }
+
+    .stats b {
+        font-size: 20px
+    }
+
+    .stats small {
+        font-size: 7px
+    }
+
+    .layout {
+        grid-template-columns: 1fr
+    }
+
+    .playlist {
+        min-height: 260px
+    }
+
+    .controls {
+        font-size: 8px
+    }
+
+    .controls kbd {
+        min-width: 17px;
+        height: 18px
+    }
+
+    .touch-controls {
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        padding: 4px 0 14px
+    }
+
+    .touch-controls button {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #49435c;
+        border-radius: 7px;
+        background: #211e32;
+        color: #eee;
+        font-size: 18px;
+        touch-action: none
+    }
+
+    .hint {
+        font-size: 9px
+    }
+}
+
+@media(max-width:420px) {
+    .game-shell {
+        padding: 0 11px
+    }
+
+    .brand {
+        font-size: 14px
+    }
+
+    .topbar nav {
+        gap: 9px
+    }
+
+    .topbar nav a {
+        font-size: 9px
+    }
+
+    .intro {
+        align-items: center
+    }
+
+    .intro h1 {
+        font-size: 31px
+    }
+
+    .lede {
+        font-size: 11px;
+        max-width: 230px
+    }
+
+    .stats {
+        gap: 8px
+    }
+
+    .stats b {
+        font-size: 17px
+    }
+
+    .stats small {
+        font-size: 6px
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        gap: 8px
+    }
+
+    .overlay-card h2 {
+        font-size: 18px
+    }
+
+    .overlay-card p {
+        font-size: 11px
+    }
+}
