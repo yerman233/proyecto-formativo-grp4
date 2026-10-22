@@ -49,7 +49,7 @@ import Footer from "../components/Footer.astro";
 					<h3>Germán</h3>
 					<p><strong>Rol:</strong> Vocalista Principal</p>
 					<p>
-						Diego le da voz e identidad a las canciones con su
+						Germán le da voz e identidad a las canciones con su
 						estilo vocal único y su presencia en el escenario.
 					</p>
 				</article>
@@ -87,7 +87,7 @@ import Footer from "../components/Footer.astro";
 					<h3>Diego</h3>
 					<p><strong>Rol:</strong> Baterista</p>
 					<p>
-						Germán marca el tiempo y la potencia de la banda con su
+						Diego marca el tiempo y la potencia de la banda con su
 						fuerza en la percusión.
 					</p>
 				</article>
@@ -114,3 +114,122 @@ import Footer from "../components/Footer.astro";
 		<Footer />
 	</body>
 </html>
+
+<style>
+    /* Estilos globales para la página */
+    :global(body) {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+
+    /* Contenedor principal */
+    main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Secciones principales */
+    section {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        color: #38bdf8;
+        font-size: 1.75rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #334155;
+        padding-bottom: 0.5rem;
+    }
+
+    p {
+        margin-top: 0;
+        color: #cbd5e1;
+    }
+
+    .subtitle {
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    /* Rejilla para la sección de integrantes */
+    .grid-members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+    }
+
+    article {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 1.25rem;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    article:hover {
+        transform: translateY(-3px);
+        border-color: #38bdf8;
+    }
+
+    article h3 {
+        margin: 0 0 0.25rem 0;
+        color: #f8fafc;
+        font-size: 1.2rem;
+    }
+
+    article .role {
+        color: #38bdf8;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+    }
+
+    article p {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    /* Lista de lanzamientos */
+    .release-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .release-list li {
+        background-color: #0f172a;
+        border-left: 4px solid #38bdf8;
+        border-radius: 0 8px 8px 0;
+        padding: 0.85rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .release-list span {
+        color: #94a3b8;
+    }
+
+    .release-list strong {
+        color: #f8fafc;
+    }
+
+    .release-list small {
+        color: #64748b;
+        margin-left: auto;
+    }
+</style>
