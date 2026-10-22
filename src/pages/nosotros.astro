@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Grupo</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .role {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nuestro Equipo</h1>
+        <p>Escribe aquí una breve presentación general del grupo o del proyecto que están realizando juntos.</p>
+    </header>
+
+    <div class="container">
+        <!-- Integrante 1 -->
+        <div class="card">
+            <div class="avatar">FI</div>
+            <h2>Fernando Ibarra</h2>
+            <div class="role">Rol / Especialidad</div>
+            <p>Escribe aquí la descripción de Fernando. Puedes hablar sobre sus fortalezas, responsabilidades en el proyecto o intereses.</p>
+        </div>
+
+        <!-- Integrante 2 -->
+        <div class="card">
+            <div class="avatar">GR</div>
+            <h2>Germán Riveróz</h2>
+            <div class="role">Rol / Especialidad</div>
+            <p>Escribe aquí la descripción de Germán. Puedes añadir información sobre su trabajo en el equipo o pasatiempos.</p>
+        </div>
+
+        <!-- Integrante 3 -->
+        <div class="card">
+            <div class="avatar">CU</div>
+            <h2>Cristhian Urdaneta</h2>
+            <div class="role">Rol / Especialidad</div>
+            <p>Escribe aquí la descripción de Cristhian. Agrega los detalles personales o aportes clave al grupo.</p>
+        </div>
+
+        <!-- Integrante 4 -->
+        <div class="card">
+            <div class="avatar">DA</div>
+            <h2>Diego Alarcón</h2>
+            <div class="role">Rol / Especialidad</div>
+            <p>Escribe aquí la descripción de Diego. Modifica este espacio con la información que prefieras destacar.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sitio Oficial del Grupo. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
