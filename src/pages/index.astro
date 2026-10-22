@@ -1,6 +1,6 @@
 ---
-import header from "../components/Header.astro"
-import footer from "../components/Footer.astro"
+import header from "../components/Header.astro";
+import footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -13,8 +13,167 @@ import footer from "../components/Footer.astro"
 		<title>Página principal</title>
 	</head>
 	<body>
-	{{header}}		
-		<h1>Astro</h1>
-		{{footer}}
+		{{ header }}
+				<!-- Encabezado Principal y Navegación -->
+				<header>
+					<h1>Nombre de la Banda</h1>
+					<p>Página oficial y presentación</p>
+					<nav>
+						<ul>
+							<li><a href="#presentacion">Inicio</a></li>
+							<li><a href="#historia">Sobre Nosotros</a></li>
+							<li><a href="#integrantes">Integrantes</a></li>
+							<li><a href="#musica">Música</a></li>
+							<li><a href="#contacto">Contacto</a></li>
+						</ul>
+					</nav>
+				</header>
+
+				<main>
+					<!-- Sección de Presentación / Inicio -->
+					<section id="presentacion">
+						<h2>Bienvenidos a Nuestra Página Oficial</h2>
+						<p>
+							Somos una banda de música apasionada por crear
+							experiencias sonoras únicas. Fusionando ritmos,
+							letras profundas y una energía inigualable en el
+							escenario, buscamos conectar con nuestro público a
+							través del poder de la música.
+						</p>
+					</section>
+
+					<!-- Sección Historia -->
+					<section id="historia">
+						<h2>Nuestra Historia</h2>
+						<p>
+							La banda nació de la unión de cinco amigos
+							apasionados por la música que decidieron compartir
+							su talento con el mundo. A lo largo de nuestro
+							recorrido, hemos desarrollado un estilo distintivo
+							que combina diferentes influencias musicales,
+							entregando sencillos y presentaciones en vivo llenas
+							de pasión.
+						</p>
+					</section>
+
+					<!-- Sección de Integrantes -->
+					<section id="integrantes">
+						<h2>Integrantes de la Banda</h2>
+						<p>Conoce a los músicos detrás de nuestro sonido:</p>
+
+						<article>
+							<h3>Diego</h3>
+							<p><strong>Rol:</strong> Vocalista Principal</p>
+							<p>
+								Diego le da voz e identidad a las canciones con
+								su estilo vocal único y su presencia en el
+								escenario.
+							</p>
+						</article>
+
+						<article>
+							<h3>Kevin</h3>
+							<p><strong>Rol:</strong> Guitarrista</p>
+							<p>
+								Kevin aporta los riffs, solos de guitarra y la
+								energía armónica que define la esencia del
+								grupo.
+							</p>
+						</article>
+
+						<article>
+							<h3>Fernando</h3>
+							<p><strong>Rol:</strong> Bajista</p>
+							<p>
+								Fernando es el encargado de dar la base sólida y
+								el ritmo grave que sostiene cada composición.
+							</p>
+						</article>
+
+						<article>
+							<h3>Cristhian</h3>
+							<p>
+								<strong>Rol:</strong> Tecladista / Sintetizadores
+							</p>
+							<p>
+								Cristhian añade capas de texturas musicales,
+								atmósferas y melodías a través de los teclados.
+							</p>
+						</article>
+
+						<article>
+							<h3>Germán</h3>
+							<p><strong>Rol:</strong> Baterista</p>
+							<p>
+								Germán marca el tiempo y la potencia de la banda
+								con su fuerza en la percusión.
+							</p>
+						</article>
+					</section>
+
+					<!-- Sección de Música / Lanzamientos -->
+					<section id="musica">
+						<h2>Últimos Lanzamientos</h2>
+						<ul>
+							<li>
+								<strong>Sencillo 1:</strong> "Primer Acorde" (2024)
+							</li>
+							<li>
+								<strong>Sencillo 2:</strong> "Luces de la Ciudad"
+								(2024)
+							</li>
+							<li>
+								<strong>EP Debut:</strong> "Nuestra Esencia" (2025)
+							</li>
+						</ul>
+					</section>
+
+					<!-- Sección de Contacto -->
+					<section id="contacto">
+						<h2>Contacto y Contrataciones</h2>
+						<p>
+							¿Quieres contratarnos para un evento o contactar con
+							la banda?
+						</p>
+						<form action="#" method="post">
+							<div>
+								<label for="nombre">Nombre:</label><br />
+								<input
+									type="text"
+									id="nombre"
+									name="nombre"
+									required
+								/>
+							</div>
+							<br />
+							<div>
+								<label for="email">Correo Electrónico:</label
+								><br />
+								<input
+									type="email"
+									id="email"
+									name="email"
+									required
+								/>
+							</div>
+							<br />
+							<div>
+								<label for="mensaje">Mensaje:</label><br />
+								<textarea
+									id="mensaje"
+									name="mensaje"
+									rows="4"
+									required></textarea>
+							</div>
+							<br />
+							<button type="submit">Enviar Mensaje</button>
+						</form>
+					</section>
+				</main>
+
+				<!-- Pie de Página -->
+				{{ footer }}
+			</body>
+		</html>
 	</body>
 </html>
