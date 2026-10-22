@@ -1,0 +1,103 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	--ink: #f5f1eb;
+	--muted: #a9a39b;
+	--accent: #e9a46f;
+	--line: #ffffff1b;
+	min-height: 100vh;
+	margin: 0;
+	background: #171615;
+	color: var(--ink);
+	font-family: "Segoe UI", Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+body > div:first-child {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding: 1.1rem clamp(1.25rem, 7vw, 7rem);
+	border-bottom: 1px solid var(--line);
+	background: #171615;
+}
+
+body > div:first-child h1 {
+	margin: 0;
+	color: var(--ink);
+	font-size: 1rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+body > div:first-child nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.4rem;
+}
+
+body > div:first-child nav a {
+	color: var(--muted);
+	font-size: 0.78rem;
+	text-decoration: none;
+	transition: color 180ms ease;
+}
+
+body > div:first-child nav a:hover,
+body > div:first-child nav a[aria-current="page"] {
+	color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 4px;
+}
+
+body > div:last-child {
+	padding: 1.5rem clamp(1.5rem, 10vw, 10rem);
+	border-top: 1px solid var(--line);
+	color: #8f8982;
+	font-size: 0.75rem;
+}
+
+body > div:last-child p {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0.5rem 1rem;
+	margin: 0;
+}
+
+body > div:last-child a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+@media (max-width: 760px) {
+	body > div:first-child {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+	}
+}

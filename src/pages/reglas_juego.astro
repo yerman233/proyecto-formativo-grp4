@@ -1,0 +1,203 @@
+---
+import HeaderAstroComponent from "../components/Header.astro";
+import FooterAstroComponent from "../components/Footer.astro";
+import "../style/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Reglas del quiz musical de Too Late Again."
+		/>
+		<title>Reglas del juego | Too Late Again</title>
+	</head>
+	<body>
+		<HeaderAstroComponent />
+		<main>
+			<section class="hero">
+				<p class="eyebrow">ANTES DE EMPEZAR</p>
+				<h1>Reglas de<br /><em>juego.</em></h1>
+				<p class="intro">
+					Un pequeño quiz para poner a prueba cuánto conoces a Too Late
+					Again. No necesitas más que curiosidad y ganas de jugar.
+				</p>
+			</section>
+
+			<section class="rules section-wrap" aria-labelledby="rules-title">
+				<div class="section-heading">
+					<p class="eyebrow">SENCILLO Y MUSICAL</p>
+					<h2 id="rules-title">¿Cómo se <em>juega?</em></h2>
+				</div>
+				<ol class="rule-list">
+					<li>
+						<span class="rule-number">01</span>
+						<div>
+							<h3>Lee la pregunta</h3>
+							<p>El juego incluye cinco preguntas sobre la banda, sus integrantes y su historia.</p>
+						</div>
+					</li>
+					<li>
+						<span class="rule-number">02</span>
+						<div>
+							<h3>Elige una respuesta</h3>
+							<p>Selecciona una de las tres opciones. Cada pregunta permite un solo intento.</p>
+						</div>
+					</li>
+					<li>
+						<span class="rule-number">03</span>
+						<div>
+							<h3>Suma tus puntos</h3>
+							<p>Cada respuesta correcta vale un punto. Al responder, verás cuál era la opción correcta.</p>
+						</div>
+					</li>
+					<li>
+						<span class="rule-number">04</span>
+						<div>
+							<h3>Completa el reto</h3>
+							<p>Al final conocerás tu resultado sobre cinco y podrás volver a jugar cuando quieras.</p>
+						</div>
+					</li>
+				</ol>
+				<p class="note">
+					No hay límite de tiempo ni penalización por equivocarse: la idea
+					es conocer un poco más sobre la banda.
+				</p>
+				<a class="button" href="/juego">Empezar a jugar <span aria-hidden="true">↗</span></a>
+			</section>
+		</main>
+		<FooterAstroComponent />
+	</body>
+</html>
+
+<style>
+	main {
+		min-height: calc(100vh - 160px);
+		padding: 0 1.5rem;
+		background:
+			radial-gradient(ellipse at 75% 5%, #75452f38 0, transparent 34rem),
+			#171615;
+	}
+
+	.hero {
+		width: min(100%, 1000px);
+		margin: 0 auto;
+		padding: clamp(4rem, 9vw, 7rem) 0 3rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 1.25rem;
+		color: var(--accent);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin-top: 0;
+	}
+
+	.hero h1 {
+		margin-bottom: 1rem;
+		font-size: clamp(3.5rem, 8vw, 7rem);
+		font-weight: 500;
+		letter-spacing: -0.08em;
+		line-height: 0.96;
+	}
+
+	h1 em,
+	h2 em {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
+	.intro {
+		max-width: 520px;
+		margin-bottom: 0;
+		color: #bdb6ae;
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	.rules {
+		width: min(100%, 1000px);
+		margin: 0 auto;
+		padding: 2.5rem 0 clamp(5rem, 9vw, 7rem);
+	}
+
+	.section-heading {
+		margin-bottom: 2rem;
+	}
+
+	.section-heading h2 {
+		margin-bottom: 0;
+		font-size: clamp(2.4rem, 5vw, 4rem);
+		font-weight: 500;
+		letter-spacing: -0.07em;
+	}
+
+	.rule-list {
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid var(--line);
+		list-style: none;
+	}
+
+	.rule-list li {
+		display: grid;
+		grid-template-columns: 48px 1fr;
+		gap: 1rem;
+		padding: 1.4rem 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.rule-number {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.5rem;
+	}
+
+	.rule-list h3 {
+		margin-bottom: 0.35rem;
+		font-size: 1rem;
+		font-weight: 500;
+	}
+
+	.rule-list p,
+	.note {
+		margin-bottom: 0;
+		color: var(--muted);
+		font-size: 0.85rem;
+		line-height: 1.7;
+	}
+
+	.note {
+		margin: 1.5rem 0;
+	}
+
+	.button {
+		display: inline-flex;
+		min-height: 48px;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.8rem 1.15rem;
+		background: var(--accent);
+		color: #201712;
+		font-size: 0.82rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 180ms ease, background 180ms ease;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+		background: #f3b887;
+	}
+</style>

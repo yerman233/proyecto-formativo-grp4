@@ -1,0 +1,373 @@
+---
+import HeaderAstroComponent from "../components/Header.astro";
+import FooterAstroComponent from "../components/Footer.astro";
+import "../style/global.css";
+
+const integrantes = [
+	{
+		numero: "01",
+		nombre: "Diego",
+		rol: "Vocalista principal",
+		simbolo: "◉",
+		descripcion:
+			"Le da voz e identidad a las canciones con su estilo vocal y su presencia en el escenario.",
+	},
+	{
+		numero: "02",
+		nombre: "Kevin",
+		rol: "Guitarrista",
+		simbolo: "✳",
+		descripcion:
+			"Aporta los riffs, los solos y la energía armónica que define la esencia del grupo.",
+	},
+	{
+		numero: "03",
+		nombre: "Fernando",
+		rol: "Bajista",
+		simbolo: "⌁",
+		descripcion:
+			"Da la base sólida y el ritmo grave que sostiene cada composición.",
+	},
+	{
+		numero: "04",
+		nombre: "Cristhian",
+		rol: "Tecladista / sintetizadores",
+		simbolo: "〰",
+		descripcion:
+			"Añade texturas, atmósferas y melodías a través de los teclados.",
+	},
+	{
+		numero: "05",
+		nombre: "Germán",
+		rol: "Baterista",
+		simbolo: "⊙",
+		descripcion:
+			"Marca el tiempo y la potencia de la banda con su fuerza en la percusión.",
+	},
+];
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Conoce la historia y a los cinco integrantes de Too Late Again."
+		/>
+		<title>Nosotros | Too Late Again</title>
+	</head>
+	<body>
+		<HeaderAstroComponent />
+		<main>
+			<section class="hero">
+				<p class="eyebrow">CINCO AMIGOS · UN MISMO SONIDO</p>
+				<h1>Nos une la música.<br /><em>Nos define el camino.</em></h1>
+				<p class="intro">
+					Somos Too Late Again: cinco amigos que encontraron en la música
+					una forma de crear, compartir y conectar.
+				</p>
+				<a class="text-link" href="#integrantes">Conoce a la banda <span aria-hidden="true">↓</span></a>
+			</section>
+
+			<section class="story section-wrap" aria-labelledby="historia-title">
+				<div>
+					<p class="eyebrow">01 — NUESTRA HISTORIA</p>
+					<h2 id="historia-title">Una historia que se cuenta <em>en canciones.</em></h2>
+				</div>
+				<div class="story-copy">
+					<p>
+						Too Late Again nació de la unión de cinco amigos apasionados
+						por la música. Juntamos nuestras ideas y distintas
+						influencias para encontrar un sonido propio, y desde entonces
+						compartimos canciones y presentaciones en vivo llenas de
+						energía.
+					</p>
+					<p>
+						Cada instrumento aporta una voz distinta. Lo que nos mueve
+						es convertir esas voces en algo que podamos sentir y
+						compartir con quienes nos escuchan.
+					</p>
+					<div class="stat">
+						<span>05</span>
+						<p>amigos<br />una banda</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-wrap members" id="integrantes" aria-labelledby="members-title">
+				<div class="section-heading">
+					<p class="eyebrow">02 — QUIÉNES SOMOS</p>
+					<h2 id="members-title">Las personas detrás del <em>sonido.</em></h2>
+					<p class="section-description">
+						Cada integrante aporta una pieza esencial a la música de la banda.
+					</p>
+				</div>
+				<div class="member-grid">
+					{integrantes.map((integrante) => (
+						<article class="member-card">
+							<span class="member-index">{integrante.numero}</span>
+							<div class="member-symbol" aria-hidden="true">{integrante.simbolo}</div>
+							<h3>{integrante.nombre}</h3>
+							<p class="member-role">{integrante.rol}</p>
+							<p class="member-bio">{integrante.descripcion}</p>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="closing">
+				<p class="eyebrow">SEGUIMOS HACIENDO CAMINO</p>
+				<h2>Lo mejor también<br />se escucha <em>juntos.</em></h2>
+				<a class="button" href="/nuestra_musica">Explora nuestra música <span aria-hidden="true">↗</span></a>
+			</section>
+		</main>
+		<FooterAstroComponent />
+	</body>
+</html>
+
+<style>
+	main {
+		overflow: hidden;
+	}
+
+	.hero {
+		padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 10vw, 10rem);
+		border-bottom: 1px solid var(--line);
+		background:
+			radial-gradient(ellipse at 78% 30%, #75452f38 0, transparent 35rem),
+			#171615;
+	}
+
+	.eyebrow {
+		margin: 0 0 1.4rem;
+		color: var(--accent);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin-top: 0;
+	}
+
+	.hero h1 {
+		max-width: 1000px;
+		margin-bottom: 1.5rem;
+		font-size: clamp(3.5rem, 8vw, 7.5rem);
+		font-weight: 500;
+		letter-spacing: -0.08em;
+		line-height: 0.98;
+	}
+
+	h1 em,
+	h2 em {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
+	.intro {
+		max-width: 530px;
+		margin-bottom: 1.5rem;
+		color: #bdb6ae;
+		font-size: 1.05rem;
+		line-height: 1.8;
+	}
+
+	.text-link {
+		color: var(--ink);
+		font-size: 0.85rem;
+		text-decoration: none;
+	}
+
+	.text-link span {
+		padding-left: 0.4rem;
+		color: var(--accent);
+	}
+
+	.section-wrap {
+		width: min(100% - 3rem, 1120px);
+		margin-inline: auto;
+		padding-block: clamp(5rem, 10vw, 8rem);
+	}
+
+	.story {
+		display: grid;
+		grid-template-columns: 1fr 0.8fr;
+		gap: clamp(2rem, 8vw, 8rem);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.story h2,
+	.section-heading h2,
+	.closing h2 {
+		margin-bottom: 0;
+		font-size: clamp(2.5rem, 5vw, 4.5rem);
+		font-weight: 500;
+		letter-spacing: -0.07em;
+		line-height: 1.03;
+	}
+
+	.story-copy {
+		padding-top: 2.2rem;
+		color: #bdb6ae;
+		font-size: 0.98rem;
+		line-height: 1.9;
+	}
+
+	.stat {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 2rem;
+		padding-top: 1.2rem;
+		border-top: 1px solid var(--line);
+	}
+
+	.stat span {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 3rem;
+	}
+
+	.stat p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+
+	.members {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.section-description {
+		max-width: 420px;
+		margin: 1rem 0 0;
+		color: var(--muted);
+		font-size: 0.92rem;
+		line-height: 1.7;
+	}
+
+	.member-grid {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.member-card {
+		position: relative;
+		grid-column: span 2;
+		min-height: 255px;
+		padding: 1.5rem;
+		border: 1px solid var(--line);
+		background: linear-gradient(145deg, #ffffff0a, #ffffff03);
+		transition: border-color 180ms ease, transform 180ms ease;
+	}
+
+	.member-card:nth-child(4) {
+		grid-column: 2 / span 2;
+	}
+
+	.member-card:hover {
+		transform: translateY(-4px);
+		border-color: #e9a46f66;
+	}
+
+	.member-index {
+		position: absolute;
+		top: 1.3rem;
+		right: 1.3rem;
+		color: #77716a;
+		font-size: 0.65rem;
+		letter-spacing: 0.1em;
+	}
+
+	.member-symbol {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		margin-bottom: 1.7rem;
+		place-items: center;
+		border: 1px solid #e9a46f66;
+		border-radius: 50%;
+		color: var(--accent);
+		font-size: 1.4rem;
+	}
+
+	.member-card h3 {
+		margin-bottom: 0.3rem;
+		font-size: 1.3rem;
+		font-weight: 500;
+	}
+
+	.member-role {
+		margin-bottom: 0.8rem;
+		color: var(--accent);
+		font-size: 0.67rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.member-bio {
+		margin-bottom: 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.7;
+	}
+
+	.closing {
+		padding: clamp(4rem, 9vw, 7rem) 1.5rem;
+		text-align: center;
+		background: radial-gradient(ellipse at 50% 100%, #75452f30, transparent 60%);
+	}
+
+	.closing h2 {
+		margin-bottom: 2rem;
+	}
+
+	.button {
+		display: inline-flex;
+		min-height: 48px;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.8rem 1.15rem;
+		background: var(--accent);
+		color: #201712;
+		font-size: 0.82rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 180ms ease, background 180ms ease;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+		background: #f3b887;
+	}
+
+	@media (max-width: 760px) {
+		.story {
+			grid-template-columns: 1fr;
+		}
+
+		.story-copy {
+			padding-top: 0;
+		}
+
+		.member-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.member-card,
+		.member-card:nth-child(4) {
+			grid-column: auto;
+			min-height: 0;
+		}
+	}
+</style>

@@ -1,0 +1,355 @@
+---
+import HeaderAstroComponent from "../components/Header.astro";
+import FooterAstroComponent from "../components/Footer.astro";
+import "../style/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Pon a prueba lo que sabes sobre Too Late Again con este quiz musical."
+		/>
+		<title>Juego | Too Late Again</title>
+	</head>
+	<body>
+		<HeaderAstroComponent />
+		<main>
+			<section class="hero">
+				<p class="eyebrow">UN RETO PARA FANS</p>
+				<h1>¿Cuánto sabes<br />de <em>Too Late Again?</em></h1>
+				<p class="intro">
+					Cinco preguntas sobre la banda. Elige una respuesta y comprueba
+					cuánto conoces de nuestra historia y nuestro sonido.
+				</p>
+			</section>
+
+			<section class="game-card" aria-labelledby="question-title">
+				<div class="game-topline">
+					<p id="progress" class="eyebrow">PREGUNTA 1 DE 5</p>
+					<p class="score">Puntos <span id="score">0</span></p>
+				</div>
+				<h2 id="question-title">¿Quién es el vocalista principal de la banda?</h2>
+				<div class="answers" aria-label="Opciones de respuesta">
+					<button class="answer-option" type="button" data-answer="0">Diego</button>
+					<button class="answer-option" type="button" data-answer="1">Kevin</button>
+					<button class="answer-option" type="button" data-answer="2">Fernando</button>
+				</div>
+				<p id="feedback" class="feedback" aria-live="polite">Elige una respuesta para continuar.</p>
+				<button id="next" class="button" type="button" disabled>
+					Siguiente pregunta <span aria-hidden="true">→</span>
+				</button>
+			</section>
+
+			<p class="game-note">
+				¿Quieres repasar? <a href="/nosotros">Conoce a los integrantes</a> y
+				<a href="/reglas_juego">lee las reglas del juego</a>.
+			</p>
+		</main>
+		<FooterAstroComponent />
+	</body>
+</html>
+
+<script>
+	const preguntas = [
+		{
+			pregunta: "¿Quién es el vocalista principal de la banda?",
+			opciones: ["Diego", "Kevin", "Fernando"],
+			correcta: 0,
+		},
+		{
+			pregunta: "¿Qué instrumento toca Kevin?",
+			opciones: ["Batería", "Guitarra", "Teclados"],
+			correcta: 1,
+		},
+		{
+			pregunta: "¿Quién aporta la base grave como bajista?",
+			opciones: ["Cristhian", "Germán", "Fernando"],
+			correcta: 2,
+		},
+		{
+			pregunta: "¿Qué instrumento toca Cristhian?",
+			opciones: ["Teclados y sintetizadores", "Guitarra", "Bajo"],
+			correcta: 0,
+		},
+		{
+			pregunta: "¿En qué año se formó Too Late Again?",
+			opciones: ["2022", "2024", "2025"],
+			correcta: 1,
+		},
+	] as const;
+
+	const titulo = document.querySelector<HTMLHeadingElement>("#question-title");
+	const progreso = document.querySelector<HTMLParagraphElement>("#progress");
+	const puntos = document.querySelector<HTMLSpanElement>("#score");
+	const feedback = document.querySelector<HTMLParagraphElement>("#feedback");
+	const siguiente = document.querySelector<HTMLButtonElement>("#next");
+	const botones = Array.from(
+		document.querySelectorAll<HTMLButtonElement>("[data-answer]"),
+	);
+
+	if (!titulo || !progreso || !puntos || !feedback || !siguiente || botones.length !== 3) {
+		throw new Error("No se pudo inicializar el juego de Too Late Again.");
+	}
+
+	let indice = 0;
+	let puntaje = 0;
+	let respondida = false;
+	let terminado = false;
+
+	function mostrarPregunta() {
+		const actual = preguntas[indice];
+		titulo.textContent = actual.pregunta;
+		progreso.textContent = `PREGUNTA ${indice + 1} DE ${preguntas.length}`;
+		puntos.textContent = String(puntaje);
+		feedback.textContent = "Elige una respuesta para continuar.";
+		feedback.className = "feedback";
+		siguiente.disabled = true;
+		siguiente.textContent = "Siguiente pregunta →";
+		respondida = false;
+		terminado = false;
+
+		botones.forEach((boton, opcion) => {
+			boton.textContent = actual.opciones[opcion];
+			boton.hidden = false;
+			boton.disabled = false;
+			boton.classList.remove("correct", "incorrect");
+		});
+	}
+
+	botones.forEach((boton) => {
+		boton.addEventListener("click", () => {
+			if (respondida) return;
+
+			respondida = true;
+			const actual = preguntas[indice];
+			const seleccion = Number(boton.dataset.answer);
+			const esCorrecta = seleccion === actual.correcta;
+
+			if (esCorrecta) {
+				puntaje += 1;
+				boton.classList.add("correct");
+				feedback.textContent = "¡Correcto! Esa respuesta es parte de nuestra historia.";
+			} else {
+				boton.classList.add("incorrect");
+				botones[actual.correcta].classList.add("correct");
+				feedback.textContent = `Casi. La respuesta correcta es ${actual.opciones[actual.correcta]}.`;
+			}
+
+			puntos.textContent = String(puntaje);
+			botones.forEach((opcion) => (opcion.disabled = true));
+			siguiente.disabled = false;
+		});
+	});
+
+	siguiente.addEventListener("click", () => {
+		if (terminado) {
+			indice = 0;
+			puntaje = 0;
+			mostrarPregunta();
+			return;
+		}
+
+		if (indice < preguntas.length - 1) {
+			indice += 1;
+			mostrarPregunta();
+			return;
+		}
+
+		titulo.textContent = "¡Reto completado!";
+		progreso.textContent = "RESULTADO FINAL";
+		feedback.textContent = `Sumaste ${puntaje} de ${preguntas.length} puntos. ¡Gracias por jugar!`;
+		feedback.className = "feedback result";
+		botones.forEach((boton) => (boton.hidden = true));
+		siguiente.textContent = "Jugar de nuevo ↻";
+		terminado = true;
+	});
+</script>
+
+<style>
+	main {
+		min-height: calc(100vh - 160px);
+		padding: 0 1.5rem 5rem;
+		background:
+			radial-gradient(ellipse at 75% 5%, #75452f38 0, transparent 34rem),
+			#171615;
+	}
+
+	.hero {
+		width: min(100%, 900px);
+		margin: 0 auto;
+		padding: clamp(4rem, 9vw, 7rem) 0 2.5rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 1.25rem;
+		color: var(--accent);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+	}
+
+	h1,
+	h2,
+	p {
+		margin-top: 0;
+	}
+
+	.hero h1 {
+		margin-bottom: 1rem;
+		font-size: clamp(3.2rem, 8vw, 6.5rem);
+		font-weight: 500;
+		letter-spacing: -0.08em;
+		line-height: 0.98;
+	}
+
+	h1 em {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
+	.intro {
+		max-width: 560px;
+		margin-bottom: 0;
+		color: #bdb6ae;
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	.game-card {
+		width: min(100%, 900px);
+		margin: 0 auto;
+		padding: clamp(1.5rem, 5vw, 3.5rem);
+		border: 1px solid var(--line);
+		background: linear-gradient(145deg, #ffffff0a, #ffffff03);
+	}
+
+	.game-topline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.game-topline .eyebrow,
+	.score {
+		margin-bottom: 0;
+	}
+
+	.score {
+		color: var(--muted);
+		font-size: 0.8rem;
+	}
+
+	.score span {
+		padding-left: 0.4rem;
+		color: var(--accent);
+		font-weight: 700;
+	}
+
+	.game-card h2 {
+		max-width: 650px;
+		margin-bottom: 2rem;
+		font-size: clamp(1.6rem, 4vw, 2.5rem);
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		line-height: 1.2;
+	}
+
+	.answers {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.8rem;
+	}
+
+	.answer-option {
+		min-height: 58px;
+		padding: 0.9rem 1rem;
+		border: 1px solid #ffffff2b;
+		background: #ffffff08;
+		color: var(--ink);
+		font: inherit;
+		text-align: left;
+		cursor: pointer;
+		transition: border-color 180ms ease, background 180ms ease;
+	}
+
+	.answer-option:hover:not(:disabled) {
+		border-color: var(--accent);
+		background: #e9a46f12;
+	}
+
+	.answer-option:disabled {
+		cursor: default;
+	}
+
+	.answer-option.correct {
+		border-color: #86b991;
+		background: #86b99120;
+	}
+
+	.answer-option.incorrect {
+		border-color: #d78272;
+		background: #d7827220;
+	}
+
+	.feedback {
+		min-height: 1.5rem;
+		margin: 1.2rem 0;
+		color: var(--muted);
+		font-size: 0.85rem;
+		line-height: 1.6;
+	}
+
+	.feedback.result {
+		color: var(--ink);
+		font-size: 1rem;
+	}
+
+	.button {
+		min-height: 46px;
+		padding: 0.75rem 1rem;
+		border: 0;
+		background: var(--accent);
+		color: #201712;
+		font: inherit;
+		font-size: 0.82rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition: background 180ms ease, transform 180ms ease;
+	}
+
+	.button:hover:not(:disabled) {
+		transform: translateY(-2px);
+		background: #f3b887;
+	}
+
+	.button:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
+	}
+
+	.game-note {
+		width: min(100%, 900px);
+		margin: 1.5rem auto 0;
+		color: var(--muted);
+		font-size: 0.8rem;
+		line-height: 1.8;
+	}
+
+	.game-note a {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	@media (max-width: 600px) {
+		.answers {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
