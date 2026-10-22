@@ -11,24 +11,10 @@ import footer from "../components/Footer.astro";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Página principal</title>
-		
 	</head>
 	<body>
-		{{ header }}
 		<!-- Encabezado Principal y Navegación -->
-		<header>
-			<h1>Nombre de la Banda</h1>
-			<p>Página oficial y presentación</p>
-			<nav>
-				<ul>
-					<li><a href="#presentacion">Inicio</a></li>
-					<li><a href="#historia">Sobre Nosotros</a></li>
-					<li><a href="#integrantes">Integrantes</a></li>
-					<li><a href="#musica">Música</a></li>
-					<li><a href="#contacto">Contacto</a></li>
-				</ul>
-			</nav>
-		</header>
+		{{ header }}
 
 		<main>
 			<!-- Sección de Presentación / Inicio -->
@@ -61,7 +47,7 @@ import footer from "../components/Footer.astro";
 				<p>Conoce a los músicos detrás de nuestro sonido:</p>
 
 				<article>
-					<h3>Diego</h3>
+					<h3>Germán</h3>
 					<p><strong>Rol:</strong> Vocalista Principal</p>
 					<p>
 						Diego le da voz e identidad a las canciones con su
@@ -99,7 +85,7 @@ import footer from "../components/Footer.astro";
 				</article>
 
 				<article>
-					<h3>Germán</h3>
+					<h3>Diego</h3>
 					<p><strong>Rol:</strong> Baterista</p>
 					<p>
 						Germán marca el tiempo y la potencia de la banda con su
@@ -123,37 +109,9 @@ import footer from "../components/Footer.astro";
 					</li>
 				</ul>
 			</section>
-
-			<!-- Sección de Contacto -->
-			<section id="contacto">
-				<h2>Contacto y Contrataciones</h2>
-				<p>
-					¿Quieres contratarnos para un evento o contactar con la
-					banda?
-				</p>
-				<form action="#" method="post">
-					<div>
-						<label for="nombre">Nombre:</label><br />
-						<input type="text" id="nombre" name="nombre" required />
-					</div>
-					<br />
-					<div>
-						<label for="email">Correo Electrónico:</label><br />
-						<input type="email" id="email" name="email" required />
-					</div>
-					<br />
-					<div>
-						<label for="mensaje">Mensaje:</label><br />
-						<textarea id="mensaje" name="mensaje" rows="4" required
-						></textarea>
-					</div>
-					<br />
-					<button type="submit">Enviar Mensaje</button>
-				</form>
-			</section>
 		</main>
 
 		<!-- Pie de Página -->
-		{{ footer }}>
+		{{ footer }}
 	</body>
 </html>
