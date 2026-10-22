@@ -1,159 +1,844 @@
 ---
-import header from "../components/Header.astro";
-import footer from "../components/Footer.astro";
+import HeaderAstroComponent from "../components/Header.astro";
+import FooterAstroComponent from "../components/Footer.astro";
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Página principal</title>
-		
+		<meta
+			name="description"
+			content="Conoce a Too Late Again, nuestra historia, integrantes, música y próximos proyectos."
+		/>
+		<title>Too Late Again | Música hecha para sentir</title>
 	</head>
 	<body>
-		{{ header }}
-		<!-- Encabezado Principal y Navegación -->
-		<header>
-			<h1>Nombre de la Banda</h1>
-			<p>Página oficial y presentación</p>
-			<nav>
-				<ul>
-					<li><a href="#presentacion">Inicio</a></li>
-					<li><a href="#historia">Sobre Nosotros</a></li>
-					<li><a href="#integrantes">Integrantes</a></li>
-					<li><a href="#musica">Música</a></li>
-					<li><a href="#contacto">Contacto</a></li>
-				</ul>
-			</nav>
-		</header>
+		<HeaderAstroComponent />
 
 		<main>
-			<!-- Sección de Presentación / Inicio -->
-			<section id="presentacion">
-				<h2>Bienvenidos a Nuestra Página Oficial</h2>
-				<p>
-					Somos una banda de música apasionada por crear experiencias
-					sonoras únicas. Fusionando ritmos, letras profundas y una
-					energía inigualable en el escenario, buscamos conectar con
-					nuestro público a través del poder de la música.
-				</p>
+			<header class="hero" id="presentacion">
+				<div class="hero-copy">
+					<p class="eyebrow"><span></span> CINCO AMIGOS · UN MISMO SONIDO</p>
+					<h1>La música<br />nos <em>conecta.</em></h1>
+					<p class="hero-description">
+						Somos una banda apasionada por crear experiencias sonoras
+						únicas. Letras profundas, ritmos que se sienten y toda la
+						energía de tocar en vivo.
+					</p>
+					<div class="hero-actions">
+						<a class="button button-primary" href="#musica">
+							Descubre nuestra música <span aria-hidden="true">↓</span>
+						</a>
+						<a class="text-link" href="#historia">Conoce nuestra historia <span aria-hidden="true">↗</span></a>
+					</div>
+				</div>
+				<div class="hero-art" aria-hidden="true">
+					<div class="glow"></div>
+					<div class="vinyl">
+						<div class="vinyl-label"><span>TLA</span></div>
+					</div>
+					<p class="art-caption">TOO LATE AGAIN <span>—</span> EST. 2024</p>
+				</div>
+				<a class="scroll-cue" href="#historia">
+					<span class="scroll-line"></span> DESLIZA PARA EXPLORAR
+				</a>
+			</header>
+
+			<section class="story section-wrap" id="historia">
+				<div class="section-heading">
+					<p class="eyebrow">01 — DE DÓNDE VENIMOS</p>
+					<h2>Una historia que<br />se cuenta <em>en canciones.</em></h2>
+				</div>
+				<div class="story-copy">
+					<p>
+						La banda nació de la unión de cinco amigos apasionados por
+						la música que decidieron compartir su talento con el mundo.
+						A lo largo de nuestro recorrido, hemos desarrollado un
+						estilo distintivo que combina diferentes influencias
+						musicales, entregando sencillos y presentaciones en vivo
+						llenas de pasión.
+					</p>
+					<div class="story-stat">
+						<span>05</span>
+						<p>amigos creando<br />algo propio</p>
+					</div>
+				</div>
 			</section>
 
-			<!-- Sección Historia -->
-			<section id="historia">
-				<h2>Nuestra Historia</h2>
-				<p>
-					La banda nació de la unión de cinco amigos apasionados por
-					la música que decidieron compartir su talento con el mundo.
-					A lo largo de nuestro recorrido, hemos desarrollado un
-					estilo distintivo que combina diferentes influencias
-					musicales, entregando sencillos y presentaciones en vivo
-					llenas de pasión.
-				</p>
+			<section class="members section-wrap" id="integrantes">
+				<div class="section-heading">
+					<p class="eyebrow">02 — QUIÉNES SOMOS</p>
+					<h2>Las personas detrás<br />del <em>sonido.</em></h2>
+					<p class="section-description">
+						Cada quien aporta una pieza. Juntos encontramos nuestro
+						sonido.
+					</p>
+				</div>
+				<div class="member-grid">
+					<article class="member-card">
+						<span class="member-index">01</span>
+						<div class="member-symbol" aria-hidden="true">◉</div>
+						<h3>Diego</h3>
+						<p class="member-role">Vocalista principal</p>
+						<p class="member-bio">
+							Le da voz e identidad a las canciones con su estilo vocal
+							único y su presencia en el escenario.
+						</p>
+					</article>
+					<article class="member-card">
+						<span class="member-index">02</span>
+						<div class="member-symbol" aria-hidden="true">✳</div>
+						<h3>Kevin</h3>
+						<p class="member-role">Guitarrista</p>
+						<p class="member-bio">
+							Aporta los riffs, solos de guitarra y la energía armónica
+							que define la esencia del grupo.
+						</p>
+					</article>
+					<article class="member-card">
+						<span class="member-index">03</span>
+						<div class="member-symbol" aria-hidden="true">⌁</div>
+						<h3>Fernando</h3>
+						<p class="member-role">Bajista</p>
+						<p class="member-bio">
+							Da la base sólida y el ritmo grave que sostiene cada
+							composición.
+						</p>
+					</article>
+					<article class="member-card">
+						<span class="member-index">04</span>
+						<div class="member-symbol" aria-hidden="true">〰</div>
+						<h3>Cristhian</h3>
+						<p class="member-role">Tecladista / sintetizadores</p>
+						<p class="member-bio">
+							Añade texturas musicales, atmósferas y melodías a través
+							de los teclados.
+						</p>
+					</article>
+					<article class="member-card">
+						<span class="member-index">05</span>
+						<div class="member-symbol" aria-hidden="true">⊙</div>
+						<h3>Germán</h3>
+						<p class="member-role">Baterista</p>
+						<p class="member-bio">
+							Marca el tiempo y la potencia de la banda con su fuerza en
+							la percusión.
+						</p>
+					</article>
+				</div>
 			</section>
 
-			<!-- Sección de Integrantes -->
-			<section id="integrantes">
-				<h2>Integrantes de la Banda</h2>
-				<p>Conoce a los músicos detrás de nuestro sonido:</p>
-
-				<article>
-					<h3>Diego</h3>
-					<p><strong>Rol:</strong> Vocalista Principal</p>
-					<p>
-						Diego le da voz e identidad a las canciones con su
-						estilo vocal único y su presencia en el escenario.
-					</p>
-				</article>
-
-				<article>
-					<h3>Kevin</h3>
-					<p><strong>Rol:</strong> Guitarrista</p>
-					<p>
-						Kevin aporta los riffs, solos de guitarra y la energía
-						armónica que define la esencia del grupo.
-					</p>
-				</article>
-
-				<article>
-					<h3>Fernando</h3>
-					<p><strong>Rol:</strong> Bajista</p>
-					<p>
-						Fernando es el encargado de dar la base sólida y el
-						ritmo grave que sostiene cada composición.
-					</p>
-				</article>
-
-				<article>
-					<h3>Cristhian</h3>
-					<p>
-						<strong>Rol:</strong> Tecladista / Sintetizadores
-					</p>
-					<p>
-						Cristhian añade capas de texturas musicales, atmósferas
-						y melodías a través de los teclados.
-					</p>
-				</article>
-
-				<article>
-					<h3>Germán</h3>
-					<p><strong>Rol:</strong> Baterista</p>
-					<p>
-						Germán marca el tiempo y la potencia de la banda con su
-						fuerza en la percusión.
-					</p>
-				</article>
+			<section class="music section-wrap" id="musica">
+				<div class="section-heading">
+					<p class="eyebrow">03 — LO QUE SUENA</p>
+					<h2>Hecho para<br />ponerlo en <em>repeat.</em></h2>
+				</div>
+				<div class="release-list">
+					<article class="release">
+						<span class="release-number">01</span>
+						<div class="release-art release-art-one" aria-hidden="true">Ⅰ</div>
+						<div class="release-info">
+							<p>SENCILLO · 2024</p>
+							<h3>Primer Acorde</h3>
+						</div>
+						<span class="release-arrow" aria-hidden="true">↗</span>
+					</article>
+					<article class="release">
+						<span class="release-number">02</span>
+						<div class="release-art release-art-two" aria-hidden="true">Ⅱ</div>
+						<div class="release-info">
+							<p>SENCILLO · 2024</p>
+							<h3>Luces de la Ciudad</h3>
+						</div>
+						<span class="release-arrow" aria-hidden="true">↗</span>
+					</article>
+					<article class="release">
+						<span class="release-number">03</span>
+						<div class="release-art release-art-three" aria-hidden="true">✳</div>
+						<div class="release-info">
+							<p>EP DEBUT · 2025</p>
+							<h3>Nuestra Esencia</h3>
+						</div>
+						<span class="release-arrow" aria-hidden="true">↗</span>
+					</article>
+				</div>
 			</section>
 
-			<!-- Sección de Música / Lanzamientos -->
-			<section id="musica">
-				<h2>Últimos Lanzamientos</h2>
-				<ul>
-					<li>
-						<strong>Sencillo 1:</strong> "Primer Acorde" (2024)
-					</li>
-					<li>
-						<strong>Sencillo 2:</strong> "Luces de la Ciudad" (2024)
-					</li>
-					<li>
-						<strong>EP Debut:</strong> "Nuestra Esencia" (2025)
-					</li>
-				</ul>
-			</section>
-
-			<!-- Sección de Contacto -->
-			<section id="contacto">
-				<h2>Contacto y Contrataciones</h2>
-				<p>
-					¿Quieres contratarnos para un evento o contactar con la
-					banda?
-				</p>
+			<section class="contact section-wrap" id="contacto">
+				<div class="contact-copy">
+					<p class="eyebrow">04 — HABLEMOS</p>
+					<h2>¿Hacemos<br />ruido <em>juntos?</em></h2>
+					<p>
+						¿Quieres contratarnos para un evento o simplemente saludar?
+						Escríbenos.
+					</p>
+				</div>
 				<form action="#" method="post">
-					<div>
-						<label for="nombre">Nombre:</label><br />
-						<input type="text" id="nombre" name="nombre" required />
+					<div class="form-row">
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required />
 					</div>
-					<br />
-					<div>
-						<label for="email">Correo Electrónico:</label><br />
-						<input type="email" id="email" name="email" required />
+					<div class="form-row">
+						<label for="email">Correo electrónico</label>
+						<input type="email" id="email" name="email" placeholder="tu@correo.com" required />
 					</div>
-					<br />
-					<div>
-						<label for="mensaje">Mensaje:</label><br />
-						<textarea id="mensaje" name="mensaje" rows="4" required
-						></textarea>
+					<div class="form-row">
+						<label for="mensaje">Mensaje</label>
+						<textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué tienes en mente..." required></textarea>
 					</div>
-					<br />
-					<button type="submit">Enviar Mensaje</button>
+					<button class="button button-primary" type="submit">
+						Enviar mensaje <span aria-hidden="true">↗</span>
+					</button>
 				</form>
 			</section>
 		</main>
 
-		<!-- Pie de Página -->
-		{{ footer }}>
+		<FooterAstroComponent />
 	</body>
 </html>
+
+<style>
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		scroll-behavior: smooth;
+		scroll-padding-top: 2rem;
+	}
+
+	:global(body) {
+		--ink: #f5f1eb;
+		--muted: #a9a39b;
+		--accent: #e9a46f;
+		--line: #ffffff1b;
+		margin: 0;
+		background: #171615;
+		color: var(--ink);
+		font-family: "Segoe UI", Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	:global(body > div:first-of-type) {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding: 1.1rem clamp(1.25rem, 7vw, 7rem);
+		border-bottom: 1px solid var(--line);
+		background: #171615;
+	}
+
+	:global(body > div:first-of-type h1) {
+		margin: 0;
+		color: var(--ink);
+		font-size: 1rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	:global(body > div:first-of-type nav) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.4rem;
+	}
+
+	:global(body > div:first-of-type nav a) {
+		color: var(--muted);
+		font-size: 0.78rem;
+		text-decoration: none;
+		transition: color 180ms ease;
+	}
+
+	:global(body > div:first-of-type nav a:hover) {
+		color: var(--accent);
+	}
+
+	:global(a:focus-visible),
+	:global(button:focus-visible),
+	:global(input:focus-visible),
+	:global(textarea:focus-visible) {
+		outline: 2px solid var(--accent);
+		outline-offset: 4px;
+	}
+
+	main {
+		overflow: hidden;
+	}
+
+	.hero {
+		position: relative;
+		display: grid;
+		min-height: min(720px, calc(100svh - 70px));
+		grid-template-columns: 1fr 0.85fr;
+		align-items: center;
+		gap: 2rem;
+		padding: 5rem clamp(1.5rem, 10vw, 10rem) 7rem;
+		border-bottom: 1px solid var(--line);
+		background:
+			radial-gradient(ellipse at 74% 48%, #75452f38 0, transparent 32rem),
+			#171615;
+	}
+
+	.hero-copy {
+		position: relative;
+		z-index: 1;
+		max-width: 650px;
+	}
+
+	.eyebrow {
+		margin: 0 0 1.4rem;
+		color: var(--accent);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+	}
+
+	.hero .eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+	}
+
+	.hero .eyebrow span {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--accent);
+		box-shadow: 0 0 14px #e9a46f99;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin-top: 0;
+	}
+
+	.hero h1 {
+		margin-bottom: 1.5rem;
+		font-size: clamp(4rem, 8.8vw, 8rem);
+		font-weight: 600;
+		letter-spacing: -0.085em;
+		line-height: 0.91;
+	}
+
+	h1 em,
+	h2 em {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
+	.hero-description {
+		max-width: 475px;
+		margin-bottom: 2rem;
+		color: #c0b9b0;
+		font-size: 1.02rem;
+		line-height: 1.8;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.2rem 1.6rem;
+	}
+
+	.button {
+		display: inline-flex;
+		min-height: 48px;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		padding: 0.8rem 1.15rem;
+		border: 0;
+		border-radius: 3px;
+		font: inherit;
+		font-size: 0.82rem;
+		font-weight: 700;
+		text-decoration: none;
+		cursor: pointer;
+		transition:
+			background 180ms ease,
+			transform 180ms ease;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+	}
+
+	.button-primary {
+		background: var(--accent);
+		color: #201712;
+	}
+
+	.button-primary:hover {
+		background: #f3b887;
+	}
+
+	.text-link {
+		color: var(--ink);
+		font-size: 0.8rem;
+		text-decoration: none;
+	}
+
+	.text-link span {
+		margin-left: 0.3rem;
+		color: var(--accent);
+	}
+
+	.hero-art {
+		position: relative;
+		display: grid;
+		min-height: 440px;
+		place-items: center;
+	}
+
+	.glow {
+		position: absolute;
+		width: min(36vw, 390px);
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: #d87f4930;
+		filter: blur(70px);
+	}
+
+	.vinyl {
+		position: relative;
+		display: grid;
+		width: min(32vw, 350px);
+		min-width: 250px;
+		aspect-ratio: 1;
+		place-items: center;
+		border: 1px solid #ffffff1a;
+		border-radius: 50%;
+		background:
+			repeating-radial-gradient(circle, transparent 0 7px, #ffffff0d 8px 9px),
+			radial-gradient(circle at 32% 28%, #50443b 0, #272321 38%, #111 72%);
+		box-shadow:
+			0 35px 75px #0009,
+			inset 0 0 50px #0008;
+		transform: rotate(-13deg);
+	}
+
+	.vinyl-label {
+		display: grid;
+		width: 31%;
+		aspect-ratio: 1;
+		place-items: center;
+		border: 7px solid #191615;
+		border-radius: 50%;
+		background: var(--accent);
+		color: #211712;
+	}
+
+	.vinyl-label span {
+		font-size: clamp(1rem, 2vw, 1.5rem);
+		font-weight: 800;
+		letter-spacing: -0.1em;
+	}
+
+	.art-caption {
+		position: absolute;
+		right: 0;
+		bottom: 0.3rem;
+		color: #90877d;
+		font-size: 0.61rem;
+		letter-spacing: 0.18em;
+	}
+
+	.art-caption span {
+		padding: 0 0.45rem;
+		color: var(--accent);
+	}
+
+	.scroll-cue {
+		position: absolute;
+		bottom: 2rem;
+		left: clamp(1.5rem, 10vw, 10rem);
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		color: #8f8982;
+		font-size: 0.58rem;
+		letter-spacing: 0.15em;
+		text-decoration: none;
+	}
+
+	.scroll-line {
+		width: 34px;
+		height: 1px;
+		background: var(--accent);
+	}
+
+	.section-wrap {
+		width: min(100% - 3rem, 1120px);
+		margin-inline: auto;
+		padding-block: clamp(5rem, 10vw, 9rem);
+	}
+
+	.story {
+		display: grid;
+		grid-template-columns: 1fr 0.8fr;
+		gap: clamp(2rem, 8vw, 8rem);
+		align-items: start;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.section-heading h2,
+	.contact h2 {
+		margin-bottom: 0;
+		font-size: clamp(2.5rem, 5vw, 4.5rem);
+		font-weight: 500;
+		letter-spacing: -0.07em;
+		line-height: 1.03;
+	}
+
+	.story-copy {
+		padding-top: 2.3rem;
+	}
+
+	.story-copy > p,
+	.contact-copy > p:last-child {
+		color: #bdb6ae;
+		font-size: 0.98rem;
+		line-height: 1.9;
+	}
+
+	.story-stat {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 2rem;
+		padding-top: 1.2rem;
+		border-top: 1px solid var(--line);
+	}
+
+	.story-stat span {
+		color: var(--accent);
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 3rem;
+	}
+
+	.story-stat p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+
+	.members {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.section-description {
+		max-width: 400px;
+		margin: 1rem 0 0;
+		color: var(--muted);
+		font-size: 0.92rem;
+		line-height: 1.7;
+	}
+
+	.member-grid {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.member-card {
+		position: relative;
+		grid-column: span 2;
+		min-height: 255px;
+		padding: 1.5rem;
+		border: 1px solid var(--line);
+		background: linear-gradient(145deg, #ffffff0a, #ffffff03);
+		transition:
+			border-color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.member-card:nth-child(4) {
+		grid-column: 2 / span 2;
+	}
+
+	.member-card:hover {
+		transform: translateY(-4px);
+		border-color: #e9a46f66;
+	}
+
+	.member-index {
+		position: absolute;
+		top: 1.3rem;
+		right: 1.3rem;
+		color: #77716a;
+		font-size: 0.65rem;
+		letter-spacing: 0.1em;
+	}
+
+	.member-symbol {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		margin-bottom: 1.7rem;
+		place-items: center;
+		border: 1px solid #e9a46f66;
+		border-radius: 50%;
+		color: var(--accent);
+		font-size: 1.4rem;
+	}
+
+	.member-card h3 {
+		margin-bottom: 0.3rem;
+		font-size: 1.3rem;
+		font-weight: 500;
+	}
+
+	.member-role {
+		margin-bottom: 0.8rem;
+		color: var(--accent);
+		font-size: 0.67rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.member-bio {
+		margin-bottom: 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.7;
+	}
+
+	.music {
+		display: grid;
+		grid-template-columns: 0.8fr 1fr;
+		gap: clamp(2rem, 8vw, 8rem);
+		align-items: start;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.release-list {
+		border-top: 1px solid var(--line);
+	}
+
+	.release {
+		display: grid;
+		grid-template-columns: 28px 62px 1fr 20px;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.release-number {
+		color: #827b73;
+		font-size: 0.65rem;
+	}
+
+	.release-art {
+		display: grid;
+		width: 62px;
+		aspect-ratio: 1;
+		place-items: center;
+		color: #f0c9a1;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.7rem;
+	}
+
+	.release-art-one {
+		background: linear-gradient(135deg, #855d40, #28201b);
+	}
+
+	.release-art-two {
+		background: linear-gradient(145deg, #9b7652, #27201e 70%);
+	}
+
+	.release-art-three {
+		background: linear-gradient(135deg, #b66c54, #47302f);
+	}
+
+	.release-info p {
+		margin-bottom: 0.3rem;
+		color: var(--accent);
+		font-size: 0.58rem;
+		letter-spacing: 0.13em;
+	}
+
+	.release-info h3 {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 500;
+	}
+
+	.release-arrow {
+		color: #827b73;
+	}
+
+	.contact {
+		display: grid;
+		grid-template-columns: 0.8fr 1fr;
+		gap: clamp(2rem, 8vw, 8rem);
+	}
+
+	.contact-copy > p:last-child {
+		max-width: 340px;
+		margin-top: 1.4rem;
+	}
+
+	form {
+		display: grid;
+		gap: 1.3rem;
+	}
+
+	.form-row {
+		display: grid;
+		gap: 0.55rem;
+	}
+
+	.form-row label {
+		color: #d2cbc3;
+		font-size: 0.75rem;
+	}
+
+	.form-row input,
+	.form-row textarea {
+		width: 100%;
+		padding: 0.85rem 0;
+		border: 0;
+		border-bottom: 1px solid #ffffff35;
+		border-radius: 0;
+		background: transparent;
+		color: var(--ink);
+		font: inherit;
+		font-size: 0.85rem;
+		resize: vertical;
+		transition: border-color 180ms ease;
+	}
+
+	.form-row input::placeholder,
+	.form-row textarea::placeholder {
+		color: #77716a;
+	}
+
+	.form-row input:focus,
+	.form-row textarea:focus {
+		border-color: var(--accent);
+		outline: none;
+	}
+
+	form .button {
+		justify-self: start;
+		margin-top: 0.4rem;
+	}
+
+	:global(body > div:last-of-type) {
+		padding: 1.5rem clamp(1.5rem, 10vw, 10rem);
+		border-top: 1px solid var(--line);
+		color: #8f8982;
+		font-size: 0.75rem;
+	}
+
+	:global(body > div:last-of-type p) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+		margin: 0;
+	}
+
+	:global(body > div:last-of-type a) {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	@media (max-width: 760px) {
+		:global(body > div:first-of-type) {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		:global(body > div:first-of-type nav) {
+			gap: 0.75rem 1rem;
+		}
+
+		.hero {
+			min-height: auto;
+			grid-template-columns: 1fr;
+			padding-top: 5rem;
+			padding-bottom: 6rem;
+		}
+
+		.hero-art {
+			position: absolute;
+			right: -4rem;
+			bottom: 3rem;
+			min-height: 0;
+			opacity: 0.22;
+		}
+
+		.hero-copy {
+			max-width: 560px;
+		}
+
+		.art-caption {
+			display: none;
+		}
+
+		.story,
+		.music,
+		.contact {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.story-copy {
+			padding-top: 0;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.section-wrap {
+			width: min(100% - 2.5rem, 1120px);
+		}
+
+		.hero h1 {
+			font-size: clamp(3.7rem, 17vw, 5.5rem);
+		}
+
+		.hero-art {
+			right: -8rem;
+		}
+
+		.vinyl {
+			min-width: 230px;
+		}
+
+		.member-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.member-card,
+		.member-card:nth-child(4) {
+			grid-column: auto;
+			min-height: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(html) {
+			scroll-behavior: auto;
+		}
+
+		:global(*),
+		:global(*::before),
+		:global(*::after) {
+			transition-duration: 0.01ms !important;
+		}
+	}
+</style>

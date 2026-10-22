@@ -7,8 +7,9 @@ const canciones = [
         artista: "Linkin Park",
         album: "From Zero",
         anio: "2024",
-        acento: "#f3a45b",
-        fondo: "#33231b",
+        acento: "#f184c4",
+        fondo: "#291522",
+        detalle: "#9f477f",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/two-faced/1766137049?i=1766137063",
@@ -19,8 +20,9 @@ const canciones = [
         artista: "Eminem",
         album: "Relapse",
         anio: "2009",
-        acento: "#c9a58a",
-        fondo: "#302522",
+        acento: "#e2a34d",
+        fondo: "#281716",
+        detalle: "#a83e32",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/27/96/e3/2796e35a-484d-f1de-5098-dbde88d5fb56/00602527032139.rgb.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/beautiful/1440738082?i=1440738383",
@@ -31,8 +33,9 @@ const canciones = [
         artista: "Damiano David",
         album: "FUNNY little FEARS",
         anio: "2025",
-        acento: "#f09aa7",
-        fondo: "#35232a",
+        acento: "#e8dece",
+        fondo: "#202622",
+        detalle: "#a84b50",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/88/13/7688131c-724a-d488-da1a-efdf04168cfb/196873640747.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/the-first-time/1842151981?i=1842152119",
@@ -73,7 +76,7 @@ const canciones = [
                     canciones.map((cancion, index) => (
                         <article
                             class="song-card"
-                            style={`--card-accent: ${cancion.acento}; --card-surface: ${cancion.fondo};`}
+                            style={`--card-accent: ${cancion.acento}; --card-surface: ${cancion.fondo}; --card-detail: ${cancion.detalle};`}
                         >
                             <a
                                 class="cover-link"
@@ -220,8 +223,13 @@ const canciones = [
         background:
             radial-gradient(
                 ellipse at 100% 0%,
-                color-mix(in srgb, var(--card-accent) 16%, transparent),
+                color-mix(in srgb, var(--card-accent) 12%, transparent),
                 transparent 65%
+            ),
+            radial-gradient(
+                ellipse at 0% 100%,
+                color-mix(in srgb, var(--card-detail) 13%, transparent),
+                transparent 55%
             ),
             linear-gradient(110deg, var(--card-surface), #ffffff08 90%);
     }
