@@ -7,6 +7,8 @@ const canciones = [
         artista: "Linkin Park",
         album: "From Zero",
         anio: "2024",
+        acento: "#f3a45b",
+        fondo: "#33231b",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/two-faced/1766137049?i=1766137063",
@@ -17,6 +19,8 @@ const canciones = [
         artista: "Eminem",
         album: "Relapse",
         anio: "2009",
+        acento: "#c9a58a",
+        fondo: "#302522",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/27/96/e3/2796e35a-484d-f1de-5098-dbde88d5fb56/00602527032139.rgb.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/beautiful/1440738082?i=1440738383",
@@ -27,6 +31,8 @@ const canciones = [
         artista: "Damiano David",
         album: "FUNNY little FEARS",
         anio: "2025",
+        acento: "#f09aa7",
+        fondo: "#35232a",
         portada:
             "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/88/13/7688131c-724a-d488-da1a-efdf04168cfb/196873640747.jpg/1000x1000bb.jpg",
         enlace: "https://music.apple.com/us/album/the-first-time/1842151981?i=1842152119",
@@ -65,7 +71,10 @@ const canciones = [
             >
                 {
                     canciones.map((cancion, index) => (
-                        <article class="song-card">
+                        <article
+                            class="song-card"
+                            style={`--card-accent: ${cancion.acento}; --card-surface: ${cancion.fondo};`}
+                        >
                             <a
                                 class="cover-link"
                                 href={cancion.enlace}
@@ -205,9 +214,16 @@ const canciones = [
         display: grid;
         grid-template-columns: minmax(150px, 245px) 1fr;
         overflow: hidden;
-        border: 1px solid #ffffff18;
+        border: 1px solid
+            color-mix(in srgb, var(--card-accent) 32%, transparent);
         border-radius: 14px;
-        background: #ffffff08;
+        background:
+            radial-gradient(
+                ellipse at 100% 0%,
+                color-mix(in srgb, var(--card-accent) 16%, transparent),
+                transparent 65%
+            ),
+            linear-gradient(110deg, var(--card-surface), #ffffff08 90%);
     }
 
     .cover-link {
@@ -250,6 +266,7 @@ const canciones = [
 
     .song-label {
         margin: 0 0 0.6rem;
+        color: var(--card-accent);
     }
 
     .song-info h2 {
@@ -274,6 +291,7 @@ const canciones = [
     }
 
     .album-details > span {
+        color: var(--card-accent);
         font-size: 0.62rem;
     }
 
@@ -292,14 +310,14 @@ const canciones = [
 
     .listen-link {
         margin-top: 1.4rem;
-        color: #e9a46f;
+        color: var(--card-accent);
         font-size: 0.85rem;
         font-weight: 600;
         text-decoration: none;
     }
 
     .listen-link:hover {
-        color: #ffd0a6;
+        filter: brightness(1.2);
     }
 
     .listen-link span {
