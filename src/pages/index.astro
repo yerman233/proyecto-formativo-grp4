@@ -1,6 +1,6 @@
 ---
-import header from "../components/Header.astro";
-import footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -14,8 +14,7 @@ import footer from "../components/Footer.astro";
 	</head>
 	<body>
 		<!-- Encabezado Principal y Navegación -->
-		{{ header }}
-
+		<Header />
 		<main>
 			<!-- Sección de Presentación / Inicio -->
 			<section id="presentacion">
@@ -112,6 +111,6 @@ import footer from "../components/Footer.astro";
 		</main>
 
 		<!-- Pie de Página -->
-		{{ footer }}
+		<Footer />
 	</body>
 </html>
